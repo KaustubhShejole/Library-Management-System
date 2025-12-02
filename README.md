@@ -35,7 +35,7 @@ The project and the developer were formally **felicitated by the then Head of De
 ---
 
 ## Setup
-You can run the following command and install everything needed. MongoDB needs to be setup separately.
+You can run the following command and install everything needed. MongoDB (7.0.5 version was used) needs to be setup separately.
 ```
 npm install
 ```
