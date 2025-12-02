@@ -39,3 +39,14 @@ You can run the following command and install everything needed. MongoDB needs t
 ```
 npm install
 ```
+
+
+```
+"dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0",
+    "nodemon": "^2.0.18"
+  }
+```
