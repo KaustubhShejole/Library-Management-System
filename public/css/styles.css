@@ -1,0 +1,213 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Bookman Old Style', serif;
+}
+html, body{
+    height: 100%;
+}
+nav{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    border: 2px solid black;
+
+}
+.image{
+    text-align: center;
+}
+img{
+    display: inline-block;
+}
+.line{
+    height: 50px;
+    width: 2px;
+    position: absolute;
+    left: 50%;
+    background-color: black;
+}
+nav a{
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+}
+form{
+    margin: 15px 0;
+}
+
+h1 {
+    font-family: '', serif;
+    padding: 5px;
+    background-color: #14485F;
+    color: white;
+}
+.subDiv{
+    display: flex;
+    flex-direction: column;
+}
+.mainForm{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.businessup-nav-widget-area{
+  background-color: #1c354b;
+}
+label{
+    margin-top: 10px;
+}
+.list{
+    margin: 41px 0;
+}
+.input{
+    margin: 15px 10px;
+}
+input{
+    font-size: 15px;
+    padding: 6px 10px;
+}
+#submitForm{
+    width: 80%;
+    padding: 9px 26px;
+    font-size: 23px;
+    margin: 10px 10px;
+}
+label{
+    padding: 6px 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.add{
+    height: 200px;
+}
+h1{
+    text-align: center;
+}
+.submitClass{
+    margin-top: 15px;
+    height: 100px;
+    text-align: center;
+    font-size: 16px;
+}
+  .heading {
+    background-color: #A683E3;
+    text-align: center;
+  }
+department {
+  margin-top: 15px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 30px;
+  color: #000000;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif, monospace;
+  float: right;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-container1 {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    gap: 20px; /* Adjust the gap between buttons */
+}
+
+.action-form {
+    margin: 0; /* Remove default margin */
+}
+
+
+@media (max-width: 768px) {
+    .buttons-container1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons-container1{
+        width: 100%; /* Make buttons full width on smaller screens */
+    }
+}
+.container2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#items-grid {
+    flex: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    margin: 10px;
+}
+
+#selected_item {
+    
+    flex: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    overflow-y: auto; /* Add scrollbar if content overflows */
+
+}
+.item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.item:hover {
+    background-color: #e0e0e0; /* Change to the desired hover color */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.item h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.item p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+#button_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjust the minmax values as needed */
+  gap: 10px; /* Adjust the gap between buttons */
+  justify-content: center; /* Align items horizontally in the center */
+}
+
+#button_container > div {
+  text-align: center; /* Center text horizontally */
+}
+
+#button_container > div > button {
+  width: 100%;
+}
+/* #search_text {
+    flex: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    margin: 10px;
+}
+
+#search_button {
+    flex: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    overflow-y: auto; /* Add scrollbar if content overflows */
+} */

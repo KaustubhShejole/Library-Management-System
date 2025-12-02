@@ -1,0 +1,17 @@
+"category_name",subjects
+"Discrete Mathematics","DMS,GRAPH-TH"
+"Java Programming",JAVA
+"Old Programming Languages","PEARL,LISP,PASCAL,VB,C"
+"Concepts in Programming Language",CPL
+"Python Programming",PYTHON
+"Software Engineering and Development","SOFTWARE,DESIGN,SOFT-ENGG,FORMAL-METH"
+"Computer Architecture",SYS-PRO
+"Operating Systems","UNIX,OS,SOLARIS,DOS"
+"Database Management Systems",DBMS
+"Algorithms and Data Structures","ALGO-GENTIC,ALGO,DATA-STRUCT"
+"Networking and Telecommunication","TCOM,NETWORKING"
+"Web Technologies","HTML,XML,WEB-TECH,PHP"
+"Artificial Intelligence",AI
+"Machine Learning",AI-ML
+"Graphics and Image Processing","GRAPHICS,IMAGE-PROC"
+"Miscellaneous and Others","MISC,ACA,MULTI-MEDIA,CRYPTO,DSP,PHY"

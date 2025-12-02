@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
+
+
+</head>
+
+<body>
+
+  <div class="businessup-nav-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 text-center-xs">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                        <img src="cse_vnit_pic.jpg" />
+                        <!-- <img width="600" height="105" src="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg" class="custom-logo" alt="Department of Computer Science &amp; Engineering" decoding="async" srcset="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg 600w, https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img-300x53.jpg 300w" sizes="(max-width: 600px) 100vw, 600px"> -->
+                    </a>
+                    <!-- Logo -->
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+                  <form action="/" method="post" class="action-form">
+                      <button style = "float:right" type="submit" class="btn btn-primary">DLMS</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <form action="/" method="post" class="action-form">
+    <button type="submit" class="btn btn-primary">Home</button>
+</form> -->
+<script>
+function myFunction(fruitname) {
+  document.getElementById("demo").innerHTML = "Hello World" + String(fruitname);
+}
+</script>
+
+<script>
+  function showItemDetails(element, item) {
+  var student_id = item.student_id;
+  var name = item.name;
+  // var enrol_id = item.enrol_id;
+  var contact_num = item.contact_number;
+  var id = item._id;
+  var num_books = item.numBooksBorrowed;
+  var bookIds = item.bookIds;
+
+  // Construct the HTML content with item details
+  var htmlContent = '<h3>' + name + '</h3>' +
+                    '<p>Student Id: ' + student_id + '</p>' +
+                    // '<p>Enrolment Id: ' + enrol_id + '</p>' +
+                    '<p>Number of Books Borrowed: ' + num_books + '</p>' +
+                    '<p>Contact Number: ' + contact_num + '</p>';
+
+  var updateButtonHtml = '<form action="/update_faculty" method="get" class="action-form">' +
+    '<input type="hidden" name="itemId" value="' + id + '">' +
+    '<input type="hidden" name="parentHref" value="/view_student">' +
+    '<button type="submit" class="btn btn-secondary">Update</button>' +
+  '</form>';
+  var deleteButtonHtml = '<form action="/delete_faculty" method="post" class="action-form" onsubmit="return confirm(\'Are you sure you want to delete this item?\');">' +
+    '<input type="hidden" name="itemId" value="' + id + '">' +
+    '<input type="hidden" name="parentHref" value="/view_student">' +
+    '<button type="submit" class="btn btn-danger">Delete</button>' +
+  '</form>';
+  var viewIssuedBooksButtonHtml = '<form action="/view_issued_faculty" method="post" class="action-form">' +
+  '<input type="hidden" name="studentId" value="' + id + '">' +
+  '<input type="hidden" name="parentHref" value="/view_student">';
+
+  // Disable the button if bookIds array is empty
+  if (bookIds.length === 0) {
+    viewIssuedBooksButtonHtml += '<button type="button" class="btn btn-primary" disabled>View Issued Books</button>';
+  } else {
+    viewIssuedBooksButtonHtml += '<button type="submit" class="btn btn-primary">View Issued Books</button>';
+  }
+
+  viewIssuedBooksButtonHtml += '</form>';
+  // Set the innerHTML of the selected item div
+  document.getElementById('selected_item_information').innerHTML = htmlContent;
+  document.getElementById('update_button1').innerHTML = updateButtonHtml;
+  document.getElementById('delete_button1').innerHTML = deleteButtonHtml;
+  document.getElementById('view_button1').innerHTML = viewIssuedBooksButtonHtml;
+
+}
+</script>
+<p id="demo"></p>
+<div class="container2">
+<div id="items-grid">
+    <% newListItems.forEach(function(item) { %>
+    <div class="item" onclick="showItemDetails(this, <%= JSON.stringify(item) %>)">
+        <h3><%= item.name %></h3>
+        <p>Faculty Id: <%= item.student_id %></p>
+        <!-- <p>Enrolment Id: <%= item.enrol_id %></p> -->
+        <p>Number of books: <%= item.numBooksBorrowed %></p>
+    </div>
+    <% }) %>
+</div>
+<div id="selected_item">
+  <div id="selected_item_information">
+
+  </div>
+  <div id="button_container">
+    <div id="view_button1">
+
+    </div>
+    <div id="update_button1">
+
+    </div>
+    <div id="delete_button1" style="display:none;" >
+
+    </div>
+    <div id="issue_button1">
+
+    </div>
+  </div>
+        <!-- Content of the selected item -->
+</div>
+</div>
+
+<!-- <script>
+    const items = document.querySelectorAll('.item');
+    const detailsTable = document.getElementById('details-table');
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            // Hide all detail tables
+            document.querySelectorAll('.item-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+
+            // Show details table for the clicked item
+            const itemId = item.getAttribute('data-item-id');
+            const details = document.getElementById(`details-${itemId}`);
+            details.style.display = 'table-row';
+        });
+    });
+</script> -->
+
+
+
+
+
+
+  </body>
+
+</html>

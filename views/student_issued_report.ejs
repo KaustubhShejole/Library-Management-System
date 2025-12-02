@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+
+
+    </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        /* .change_border_color:last-child td {
+            border-bottom: 1px solid red;         } */
+        th, td {
+            padding: 8px;
+            text-align: left;
+            /* border-bottom: 1px solid black; */
+            border: 1px solid black;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .print-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+  <div class="businessup-nav-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 text-center-xs">
+                <div class="navbar-header">
+
+                    <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                        <img src="cse_vnit_pic.jpg" />
+                        </a>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+                  <form action="/" method="post" class="action-form">
+                      <button style="float:right;" type="submit" class="btn btn-primary">DLMS</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="printable-content">
+
+<center>
+  <br>
+  <b>Department of Computer Science and Engineering</b>
+  <br>
+  <br>
+  Report generated at <%= currentDate %>
+  <br>
+  List of Students having issued books,      Date: <%= currentDate.getDate() %>/<%= currentDate.getMonth() + 1%>/<%= currentDate.getFullYear() %> (dd-mm-yyyy)
+</center>
+<div class="main_part" style="padding:60px;">
+  <!-- <table>
+  <th>Student Id</th>
+  <th>Student Name</th>
+  <th>Enrolment Number</th>
+  <th>Number of Books</th>
+  <th>Contact Number</th>
+    <% newListItems.forEach(function(item) { %>
+      <tr>
+        <td>
+          <%= item.student_id %>
+        </td>
+        <td><%= item.name %></td>
+        <td><%= item.enrol_id %></td>
+        <td><%= item.numBooksBorrowed %></td>
+        <td><%= item.contact_number %></td>
+
+      </tr>
+    <% }) %>
+  </table> -->
+  <table>
+  <th>Sr. No.</th>
+  <th>Student Id</th>
+  <th>Student Name</th>
+  <th>Enrolment Number</th>
+  <th>Number of Books</th>
+  <th>Contact Number</th>
+  <th>Book Serial Number</th>
+  <th>Book Name</th>
+  <th>Book Issuing Date (dd-mm-yyyy)</th>
+  <th>
+    Book Issuing Time
+  </th>
+
+  <% var i = 0; %>
+<% newListItems.forEach(function(item) { %>
+  <% var book_details = books[i]; %>
+  <% book_details.forEach(function(book, bookIndex) { %>
+    <tr class="change_border_color">
+      <% if (bookIndex === 0) { %>
+        <td rowspan="<%= book_details.length %>"><%= i+1 %></td>
+        <td rowspan="<%= book_details.length %>"><%= item.student_id %></td>
+        <td rowspan="<%= book_details.length %>"><%= item.name %></td>
+        <td rowspan="<%= book_details.length %>"><%= item.enrol_id %></td>
+        <td rowspan="<%= book_details.length %>"><%= item.numBooksBorrowed %></td>
+        <td rowspan="<%= book_details.length %>"><%= item.contact_number %></td>
+      <% } %>
+      <td>
+        <%= book.serial_number %>
+      </td>
+      <td>
+        <%= book.title %>
+      </td>
+      <% const currentDate = new Date(book.date); %>
+      <td>
+        <% const formattedDate = ('0' + currentDate.getDate()).slice(-2) + '/' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '/' + currentDate.getFullYear(); %>
+        <%= formattedDate %>
+      </td>
+      <td>
+        <% var formattedTime = ('0' + currentDate.getHours()).slice(-2) + ':' + ('0' + currentDate.getMinutes()).slice(-2) + ':' + ('0' + currentDate.getSeconds()).slice(-2); %>
+        <% if (currentDate.getHours() > 12)
+        {
+          formattedTime = ('0' + (currentDate.getHours()-12)).slice(-2) + ':' + ('0' + currentDate.getMinutes()).slice(-2) + ':' + ('0' + currentDate.getSeconds()).slice(-2) +' p.m.';
+        }
+        else if(currentDate.getHours() == 12)
+        {
+          formattedTime = formattedTime + ' p.m.'
+        }
+        else{
+          formattedTime = formattedTime + ' a.m.';
+        } %>
+        <%= formattedTime %>
+      </td>
+    </tr>
+  <% }); %>
+  <% i = i + 1; %>
+<% }) %>
+
+  </table>
+<center>
+  These students are requested to return the books after the end of this semester
+  <br><br><br><br><br>
+</center>
+<p style="text-align: left;">
+  <b>
+    Office Staff
+  </b>
+</p>
+<p style="text-align: right;">
+  <b>
+    HoD CSE Department
+  </b>
+</p>
+</div>
+<!-- Content to be printed -->
+</div>
+<center>
+<!-- Button to trigger printing -->
+    <button class="print-button" onclick="printDiv('printable-content')">Print Div</button>
+</center>
+
+<script>
+        // Function to print only a specific div
+        function printDiv(divId) {
+            var printContents = document.getElementById(divId).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+</body>
+</html>

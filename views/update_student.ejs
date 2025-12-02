@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
+</head>
+
+<body>
+
+  <div class="businessup-nav-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 text-center-xs">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                        <img src="cse_vnit_pic.jpg" />
+                        <!-- <img width="600" height="105" src="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg" class="custom-logo" alt="Department of Computer Science &amp; Engineering" decoding="async" srcset="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg 600w, https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img-300x53.jpg 300w" sizes="(max-width: 600px) 100vw, 600px"> -->
+                    </a>
+                    <!-- Logo -->
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+                  <form action="/" method="post" class="action-form">
+                      <button style="float:right;" type="submit" class="btn btn-primary">DLMS</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="/update_student" method="post" class="item">
+  <div style="text-align: center;">
+      <h1 style="display: inline-block; line-height: 68px;">Update Student Information</h1>
+  </div>
+
+  <div class="mainForm">
+      <div class="subDiv">
+        <div class="input form-group" style="display: none;">
+            <label for="bookId">Item ID:</label> <br />
+            <input class="form-control" type="text" value="<%= item._id %>" name="itemId"/>
+        </div>
+        <div class="input form-group" style="display: none;">
+            <label for="bookId">parentHref:</label> <br />
+            <input class="form-control" type="text" value="<%= parentHref %>" name="parentHref"/>
+        </div>
+          <div class="input form-group" style="display:none">
+              <label for="bookId">Student ID:</label> <br />
+              <input class="form-control" type="text" value="<%= item.student_id%>" name="student_id"/>
+          </div>
+          <div class="input form-group">
+              <label for="bookId">Student ID:</label> <br />
+              <input class="form-control" type="text" value="<%= item.student_id%>" name="sn" disabled/>
+          </div>
+          <div class="input form-group">
+              <label for="title">Student Name:</label> <br />
+              <input class="form-control" type="text" value="<%= item.name %>" name="name" />
+          </div>
+          <div class="input form-group">
+              <label for="publication">Enrolment Id:</label><br />
+              <input class="form-control" type="text" value="<%= item.enrol_id %>" name="enrol_id" />
+          </div>
+          <div class="input form-group">
+              <label for="isbn">Contact number:</label><br />
+              <input class="form-control" type="text" value="<%= item.contact_number %>" name="contact_number" />
+          </div>
+          <div class="input form-group">
+              <label for="isbn">Number of books borrowed:</label><br />
+              <input class="form-control" type="text" value="<%= item.numBooksBorrowed %>" name="numBooksBorrowed" disabled/>
+          </div>
+          <div class="input form-group" style="display:none">
+              <label for="isbn">Number of books borrowed:</label><br />
+              <input class="form-control" type="text" value="<%= item.numBooksBorrowed %>" name="books_num"/>
+          </div>
+      </div>
+  </div>
+  <div class="submitClass">
+      <input type="submit" id="submitForm" class="btn btn-outline-primary" value="Update Student Record" />
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+    </script>
+
+
+
+</head>
+
+<body>
+
+  <div class="businessup-nav-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 text-center-xs">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                        <img src="cse_vnit_pic.jpg" />
+                        <!-- <img width="600" height="105" src="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg" class="custom-logo" alt="Department of Computer Science &amp; Engineering" decoding="async" srcset="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg 600w, https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img-300x53.jpg 300w" sizes="(max-width: 600px) 100vw, 600px"> -->
+                    </a>
+                    <!-- Logo -->
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+                  <form action="/" method="post" class="action-form">
+                      <button style="float:right;" type="submit" class="btn btn-primary">DLMS</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image heading">
+    <h1>Issue a Book</h1>
+</div>
+
+<div id="go_back">
+
+</div>
+<!-- <div class="container4">
+  <div id="book_information">
+      <!-- This is where the book information will be displayed -->
+  <!-- </div>
+  <div class="student_information">
+
+    <form action="/insert_student" method="post" class="item">
+        <div class="mainForm">
+            <div class="subDiv">
+              <div class="input">
+                Already a student search your id first if search not found then only allow the student the fill the form
+
+
+                <label for="serial_number">Student's ID Number </label>
+                    <input type="text" name = "student_id" required>
+              </div>
+                <div class="input form-group">
+                    <label for="title">Student Enrolment Id: </label>
+                    <input class="form-control" type="text" name="title" required/>
+                </div>
+
+                <div class="input">
+                    <label for="Lname">Student's Name: </label>
+                    <input class="form-control" type="text" name="name" required/>
+                </div>
+                <div class="input">
+                    <label for="Lname">Current Number of books you have: </label>
+                    <input class="form-control" type="text" value="to be get by search else by default 0 extacted "name="curr_num"/>
+                </div>
+            </div>
+
+        </div>
+        <div class="submitClass">
+            <input type="submit" id="submitForm" class="btn btn-outline-primary" value="Insert Student Details" />
+        </div>
+
+    </form>
+so js should achieve that if already a student then form for issuing book where all would be retrieved automatically else insert form would be there
+
+  </div>
+</div> -->
+
+<!-- HTML form for inputting student ID number -->
+<form id="studentCheckForm">
+  <label for="studentId">Faculty ID Number:</label>
+  <input type="text" id="studentId" name="student_id" required>
+  <button type="submit">Check Registration</button>
+</form>
+
+<!-- Display area for the result of student registration check -->
+<div id="registrationResult"></div>
+
+<!-- Form for registered student -->
+<div id="registeredStudentForm" style="display: none;">
+  <!-- Add your form fields here for registered students -->
+  <p>
+    Issue a Book
+  </p>
+</div>
+
+<div id="unregisteredStudentForm" style="display: none; margin-top: 20px;">
+  <h3>Register a Faculty</h3>
+  <form id="registerStudentForm" action="/register_faculty" method="post" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(40%, 1fr)); gap: 10px;">
+    <div class="form-group">
+      <label for="studentId">Faculty ID:</label>
+      <input type="text" id="studentId1" name="student_id" readonly class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="studentName">Faculty Name:</label>
+      <input type="text" id="studentName" name="name" required class="form-control">
+    </div>
+    <!-- <div class="form-group">
+      <label for="enrollmentNumber">Enrollment Id:</label>
+      <input type="text" id="enrollmentNumber" name="enrol_id" required class="form-control">
+    </div> -->
+    <div class="form-group">
+      <label for="contactNumber">Contact Number:</label>
+      <input type="text" id="contactNumber" name="contact_number" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" style="grid-column: 1 / -1; margin-top: 2%; margin-left: 10%; margin-right: 10%;">Register</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('studentCheckForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const studentId = document.getElementById('studentId').value;
+    document.getElementById('sd').innerHTML ='Faculty Id: '+ studentId;
+    document.getElementById('studentId1').value = studentId;
+    fetch('/check_faculty_registration', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ student_id: studentId })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // document.getElementById('sd').innerHTML = data.success;// + data.registered + data.message;
+      if (data.success) {
+        // Display the appropriate form based on student registration status
+        if (data.registered) {
+          document.getElementById('registrationResult').textContent = data.message;
+          document.getElementById('registeredStudentForm').style.display = 'block';
+        } else {
+
+          document.getElementById('registrationResult').textContent = data.message;
+          document.getElementById('unregisteredStudentForm').style.display = 'block';
+        }
+      } else {
+        console.error('Error checking student registration:', data.error);
+        // Handle error
+      }
+    })
+    .catch(error => {
+      console.error('Error checking student registration:', error);
+      // Handle error
+    });
+  });
+  const studentId = document.getElementById('studentId').value;
+  //document.getElementById('studentId1').value = studentId;
+</script>
+
+
+
+
+<p id="sd">
+  Faculty details
+</p>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories</title>
+  <!-- Link Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  .btn-category {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 10px; /* Add margin between buttons */
+    margin-bottom: 10px; /* Add margin between rows */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    text-decoration: none; /* Remove default link underline */
+    color: #555; /* Default text color */
+  }
+
+  .btn-category:hover {
+    background-color: #f8f9fa; /* Change to your desired hover background color */
+    color: #007bff; /* Change to your desired hover text color */
+    border-color: #007bff; /* Change to your desired hover border color */
+  }
+
+  .btn-category:focus {
+    outline: none; /* Remove default focus outline */
+  }
+</style>
+<link rel="stylesheet" href="css/styles.css">
+
+<script type = "text/javascript" >
+function preventBack() { window.history.forward(); }
+setTimeout("preventBack()", 0);
+window.onunload = function () { null };
+</script>
+</head>
+
+<body>
+
+<div class="businessup-nav-widget-area">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 text-center-xs">
+            <div class="navbar-header">
+                <!-- Logo -->
+                <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                  <img src="cse_vnit_pic.jpg" />
+                    <!-- <img src="cse_vnit_pic.jpg" />                -->
+                   </a>
+                <!-- Logo -->
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-8">
+            <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+              <form action="/" method="post" class="action-form">
+                  <button style="float:right;" type="submit" class="btn btn-primary">DLMS</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+  <div class="container">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+      <!-- Button to open category modal -->
+      <button id="openCategoryModal" type="button" class="btn btn-link">
+        <i class="fas fa-tags"></i>Categories
+      </button>
+      <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <!-- <div class="modal-header">
+              <h5 class="modal-title" id="categoryModalLabel">Categories</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div> -->
+            <div class="modal-body">
+              <!-- Category grid will be populated here -->
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category1" class="btn btn-category">Category 1</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category2" class="btn btn-category">Category 2</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category3" class="btn btn-category">Category 3</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category4" class="btn btn-category">Category 4</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category1" class="btn btn-category">Category 1</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category2" class="btn btn-category">Category 2</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category3" class="btn btn-category">Category 3</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category4" class="btn btn-category">Category 4</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category1" class="btn btn-category">Category 1</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category2" class="btn btn-category">Category 2</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category3" class="btn btn-category">Category 3</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category4" class="btn btn-category">Category 4</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category1" class="btn btn-category">Category 1</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category2" class="btn btn-category">Category 2</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category3" class="btn btn-category">Category 3</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-6"><a href="/category4" class="btn btn-category">Category 4</a></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- </nav> -->
+  </div>
+
+  <!-- Hidden modal -->
+
+  <!-- Link Bootstrap JS and jQuery (if required) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // Show modal on hover
+      $('#openCategoryModal').hover(function(){
+        $('#categoryModal').modal('show');
+      }, function(){
+        // Hide modal on leaving
+        if (!$('.modal-content:hover').length) {
+          $('#categoryModal').modal('hide');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

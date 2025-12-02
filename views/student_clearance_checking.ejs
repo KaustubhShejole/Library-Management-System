@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+    </script>
+
+
+
+</head>
+
+<body>
+
+  <div class="businessup-nav-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 text-center-xs">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                        <img src="cse_vnit_pic.jpg" />
+                        <!-- <img width="600" height="105" src="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg" class="custom-logo" alt="Department of Computer Science &amp; Engineering" decoding="async" srcset="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg 600w, https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img-300x53.jpg 300w" sizes="(max-width: 600px) 100vw, 600px"> -->
+                    </a>
+                    <!-- Logo -->
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+                  <form action="/" method="post" class="action-form">
+                      <button style="float:right;" type="submit" class="btn btn-primary">DLMS</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image heading">
+    <h1>Issue a Book</h1>
+</div>
+
+<div id="go_back">
+
+</div>
+
+<!-- HTML form for inputting student ID number -->
+<form id="studentCheckForm">
+  <label for="studentId">Student ID Number:</label>
+  <input type="text" id="studentId" name="student_id" required>
+  <button type="submit">Check Clearance</button>
+</form>
+<style media="screen">
+.container3 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+#student_details,
+#book_details {
+  flex: 1;
+  padding: 20px;
+}
+#student_details{
+  background-color: lightblue;
+}
+#book_details{
+  background-color: lightpink;
+}
+.submit_buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+</style>
+<!-- Display area for the result of student registration check -->
+<div id="registrationResult" style="font-style: italic"></div>
+
+<!-- Form for registered student -->
+<div id="registeredStudentForm" style="display: none;">
+  <!-- Add your form fields here for registered students -->
+
+
+
+  <div class="container3">
+    <div id="student_details">
+        <!-- Student details will be displayed here -->
+    </div>
+
+    </div>
+
+</div>
+
+<div id="parent_form" style="display:none">
+
+</div>
+
+
+<div id="unregisteredStudentForm" style="display: none; margin-top: 20px;">
+  <h3>Register a Student</h3>
+  <form id="registerStudentForm" action="/register_student" method="post" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(40%, 1fr)); gap: 10px;">
+    <div class="form-group">
+      <label for="studentId">Student ID:</label>
+      <input type="text" id="studentId1" name="student_id" readonly class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" name="name" required class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="enrollmentNumber">Enrollment Id:</label>
+      <input type="text" id="enrollmentNumber" name="enrol_id" required class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="contactNumber">Contact Number:</label>
+      <input type="text" id="contactNumber" name="contact_number" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" style="grid-column: 1 / -1; margin-top: 2%; margin-left: 10%; margin-right: 10%;">Register</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('studentCheckForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const studentId = document.getElementById('studentId').value;
+    document.getElementById('sd').innerHTML ='Student Id: '+ studentId;
+    document.getElementById('studentId1').value = studentId;
+    fetch('/check_student_registration', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ student_id: studentId })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // document.getElementById('sd').innerHTML = data.success;// + data.registered + data.message;
+      if (data.success) {
+        // Display the appropriate form based on student registration status
+        if (data.registered) {
+          document.getElementById('registrationResult').textContent = data.message;
+          document.getElementById('registeredStudentForm').style.display = 'block';
+          document.getElementById('parent_form').style.display = 'block';
+          document.getElementById('unregisteredStudentForm').style.display = 'none';
+          // Retrieve the student details from the response
+          const student = data.student;
+
+          // Extract student details into separate variables
+          const studentId = student.student_id;
+          const studentName = student.name;
+          const enrollmentNumber = student.enrol_id;
+          const contactNum = student.contact_number;
+          const numBooksBorrowed = student.numBooksBorrowed; // Corrected variable name
+
+          // Construct HTML content for the student details
+          var studentDetailsHtml =
+            '<p>Student ID: ' + studentId + '</p>' +
+            '<p>Name: ' + studentName + '</p>' +
+            '<p>Enrollment Number: ' + enrollmentNumber + '</p>' +
+            '<p>Contact Number: ' + contactNum + '</p>' +
+            '<p>Number of Books Borrowed: ' + numBooksBorrowed + '</p>';
+
+            if(numBooksBorrowed == 0){
+              studentDetailsHtml += '<b><h3>Cleared</h3></b>'
+            }
+            else{
+              studentDetailsHtml += '<b><h3>Not Cleared, will not get clearance</h3></b>'
+            }
+
+          document.getElementById('student_details').innerHTML = studentDetailsHtml;
+
+          // Construct the HTML string for the form
+          //const original_form = '<form id="issueBook" action="/issue_book" method="post" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(40%, 1fr)); gap: 10px;">';
+          const formHtml =
+            '<div class="form-group" style="display:none">' +
+            '<label for="studentId">Student ID:</label>' +
+            '<input type="text" id="studentId1" name="sid" value="' + student._id + '" readonly class="form-control">' +
+            '</div>';
+
+          // Append the HTML string to the book_details element
+          //document.getElementById('parent_form').innerHTML = original_form;
+          document.getElementById('student_id_store').innerHTML = formHtml;
+
+
+        } else {
+
+          document.getElementById('registrationResult').textContent = data.message;
+          document.getElementById('registeredStudentForm').style.display = 'block';
+          document.getElementById('unregisteredStudentForm').style.display = 'none';
+          document.getElementById('parent_form').style.display = 'none';
+          var studentDetailsHtml = '<b><h3>Never took book from Library<br />Hence Cleared</h3></b>'
+          document.getElementById('student_details').innerHTML = studentDetailsHtml;
+        }
+      } else {
+        console.error('Error checking student registration:', data.error);
+        // Handle error
+      }
+    })
+    .catch(error => {
+      console.error('Error checking student registration:', error);
+      // Handle error
+    });
+  });
+  const studentId = document.getElementById('studentId').value;
+  //document.getElementById('studentId1').value = studentId;
+</script>
+
+
+
+
+<p id="sd">
+  Student details
+</p>
+
+</body>
+</html>

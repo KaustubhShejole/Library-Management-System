@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .book-info-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .go-back-container {
+            text-align: center;
+        }
+
+        .go-back-container .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .go-back-container .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <style>
+          table {
+              border-collapse: collapse;
+              width: 100%;
+              max-width: 500px; /* Limiting width for better appearance */
+              margin: 20px auto; /* Centering the table */
+              font-family: Arial, sans-serif; /* Good font choice */
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Adding shadow */
+          }
+          th, td {
+              border: 1px solid #ddd; /* Light border */
+              padding: 12px;
+              text-align: left;
+          }
+          th {
+              background-color: #f2f2f2; /* Light gray background for header */
+          }
+          tr:nth-child(even) {
+              background-color: #f2f2f2; /* Alternate row color */
+          }
+          tr:hover {
+              background-color: #ddd; /* Highlight on hover */
+          }
+          caption {
+              font-size: 20px; /* Larger font for caption */
+              font-weight: bold;
+              padding: 10px;
+              text-align: center;
+          }
+      </style>
+      <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Adding shadow */
+            transition: 0.3s;
+            width: 300px; /* Fixed width for each card */
+            margin: 20px auto; /* Centering the card */
+            border-radius: 5px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .container h4 {
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+  <div class="businessup-nav-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 text-center-xs">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <a href="https://vnit.ac.in/cse/" class="navbar-brand" rel="home" aria-current="page">
+                      <img src="cse_vnit_pic.jpg" />
+                        <!-- <img width="600" height="105" src="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg" class="custom-logo" alt="Department of Computer Science &amp; Engineering" decoding="async" srcset="https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img.jpg 600w, https://vnit.ac.in/cse/wp-content/uploads/2018/10/vnitnew-logo-sample-img-300x53.jpg 300w" sizes="(max-width: 600px) 100vw, 600px"> -->
+                    </a>
+                    <!-- Logo -->
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="header-widget" style="padding-left: 50px;padding-top:10px;">
+                  <form action="/" method="post" class="action-form">
+                      <button style="float:right;" type="submit" class="btn btn-primary">DLMS</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+        <div class="image heading">
+            <h1>Book Information</h1>
+        </div>
+        <div class="content">
+            <div id="book_information" class="book-info-container">
+                <!-- This is where the book information will be displayed -->
+            </div>
+            <div class="history_card_table" id="studentTable">
+                <!-- To display history card -->
+            </div>
+            <div id="studentCards">
+                <!-- To display history card -->
+            </div>
+            <div id="go_back" class="go-back-container">
+                <!-- "Go Back" button will be placed here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        var sn = '<%= item.serial_number %>';
+        var title = '<%= item.title %>';
+        var authors = '<%= item.author %>';
+        var subject = '<%= item.subject %>';
+        var id = '<%= item._id %>';
+        var publication = '<%= item.publication %>';
+        var isbn = '<%= item.isbn %>';
+        var status = '<%= item.status %>';
+        var date = '<%= item.date %>';
+        var history_card = '<%= item.history_card %>';
+        // Splitting the input string into individual student records
+        var studentRecords = history_card.split('hi ').slice(1);
+
+        // Creating a table element
+        var table = document.createElement('table');
+
+        // Creating table caption
+        var caption = table.createCaption();
+        caption.innerText = 'Library Book History Card'; // Caption text
+
+        // Creating table header
+        var header = table.createTHead();
+        var row = header.insertRow(0);
+        var headers = ['Student ID', 'Name', 'Enrollment ID', 'Issuing Date', 'Returning Date'];
+        headers.forEach(headerText => {
+            var th = document.createElement('th');
+            th.appendChild(document.createTextNode(headerText));
+            row.appendChild(th);
+        });
+
+        // Populating the table with student data
+        var tbody = document.createElement('tbody');
+        studentRecords.forEach(record => {
+            // Splitting each student record into components
+            var components = record.split('\t');
+            var studentId = components[1];
+            var studentName = components[2];
+            var enrollmentId = components[3];
+            var issue_date = components[4];
+            var return_date = components[5];
+
+            // Creating a new row
+            var row = tbody.insertRow();
+
+            // Inserting data into cells
+            var cell1 = row.insertCell();
+            var cell2 = row.insertCell();
+            var cell3 = row.insertCell();
+            var cell4 = row.insertCell();
+            var cell5 = row.insertCell();
+            cell1.appendChild(document.createTextNode(studentId));
+            cell2.appendChild(document.createTextNode(studentName));
+            cell3.appendChild(document.createTextNode(enrollmentId));
+            cell4.appendChild(document.createTextNode(issue_date));
+            cell5.appendChild(document.createTextNode(return_date));
+        });
+
+        // Appending the tbody to the table
+        table.appendChild(tbody);
+
+        // Appending the table to the studentTable div
+        document.getElementById('studentTable').appendChild(table);
+
+        // Splitting the input string into individual student records
+
+        // console.log(studentRecords);
+        // // Creating a container for cards
+        // var container = document.getElementById('studentCards');
+        //
+        // // Populating the container with student cards
+        // studentRecords.forEach(record => {
+        //     // Splitting each student record into components
+        //     var components = record.split('\t');
+        //     var studentId = components[1];
+        //     var studentName = components[2];
+        //     var enrollmentId = components[3];
+        //
+        //     // Creating a card div
+        //     var card = document.createElement('div');
+        //     card.classList.add('card');
+        //
+        //     // Creating a container for card content
+        //     var cardContent = document.createElement('div');
+        //     cardContent.classList.add('container');
+        //
+        //     // Adding student data to the card content
+        //     var heading = document.createElement('h4');
+        //     heading.textContent = 'Student Record';
+        //     var idParagraph = document.createElement('p');
+        //     idParagraph.textContent = 'Student ID: ' + studentId;
+        //     var nameParagraph = document.createElement('p');
+        //     nameParagraph.textContent = 'Name: ' + studentName;
+        //     var enrollmentParagraph = document.createElement('p');
+        //     enrollmentParagraph.textContent = 'Enrollment ID: ' + enrollmentId;
+        //
+        //     // Appending elements to the card content
+        //     cardContent.appendChild(heading);
+        //     cardContent.appendChild(idParagraph);
+        //     cardContent.appendChild(nameParagraph);
+        //     cardContent.appendChild(enrollmentParagraph);
+        //
+        //     // Appending card content to the card
+        //     card.appendChild(cardContent);
+        //
+        //     // Appending card to the container
+        //     container.appendChild(card);
+        // });
+        var parentHref = '<%= parentHref %>';
+        var htmlContent = '<div class="book-info-container">' +
+                        '<div class="book-title">' +
+                            '<h3>Title: ' + title + '</h3>' +
+                        '</div>' +
+                        '<div class="book-details">' +
+                            '<ul>' +
+                                '<li><strong>Book Number:</strong> ' + sn + '</li>' +
+                                '<li><strong>Authors:</strong> ' + authors + '</li>' +
+                                '<li><strong>Subject:</strong> ' + subject + '</li>' +
+                                '<li><strong>Publication:</strong> ' + publication + '</li>' +
+                                '<li><strong>ISBN:</strong> ' + isbn + '</li>' +
+                                '<li><strong>Id:</strong> ' + id + '</li>' +
+                                '<li><strong>Status:</strong> ' + status + '</li>' +
+                                '<li><strong>Last Issuing Date:</strong> ' + date + '</li>' +
+                            '</ul>' +
+                        '</div>' +
+                    '</div>';
+        var backButtonHtml = '<form action="/goback" method="post" class="action-form">' +
+                            '<input type="hidden" name="parentHref" value=' + parentHref +'>' +
+                            '<button type="submit" class="btn btn-primary">Go Back</button>' +
+                            '</form>';
+        document.getElementById('book_information').innerHTML = htmlContent;
+        document.getElementById('go_back').innerHTML = backButtonHtml;
+    </script>
+</body>
+</html>

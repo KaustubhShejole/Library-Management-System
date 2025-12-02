@@ -1,0 +1,296 @@
+[
+  {
+    "_id": "6620d7558bcc7c05ce9039c1",
+    "name": "Discrete Mathematics and Graph Theory",
+    "subjects": [
+      "DMS",
+      "GRAPH-TH",
+      "DMGT"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c2",
+    "name": "Java Programming",
+    "subjects": [
+      "JAVA"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c3",
+    "name": "Old Programming Languages",
+    "subjects": [
+      "PEARL",
+      "LISP",
+      "PASCAL",
+      "VB"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c4",
+    "name": "Concepts in Programming Languages",
+    "subjects": [
+      "CPL"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c5",
+    "name": "Python Programming",
+    "subjects": [
+      "PYTHON"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c6",
+    "name": "Software Engineering and Development",
+    "subjects": [
+      "SOFTWARE",
+      "DESIGN",
+      "SOFT-ENGG",
+      "FORMAL-METH"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c7",
+    "name": "Operating Systems",
+    "subjects": [
+      "OS"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c8",
+    "name": "Database Management Systems",
+    "subjects": [
+      "DBMS"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039c9",
+    "name": "Algorithms and Data Structures",
+    "subjects": [
+      "ALGO"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039ca",
+    "name": "WEB PROGRAMMING",
+    "subjects": [
+      "HTML",
+      "XML",
+      "WEB-TECH",
+      "PHP"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039cb",
+    "name": "Artificial Intelligence and Machine Learning",
+    "subjects": [
+      "AI",
+      "NEURO-FUZY",
+      "AI-ML",
+      "ALGO-GENTIC"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039cc",
+    "name": "Miscellaneous and Others",
+    "subjects": [
+      "MISC",
+      "ACA",
+      "MULTI-MEDIA",
+      "CRYPTO",
+      "DSP",
+      "PHY"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039cd",
+    "name": "Computer Programming",
+    "subjects": [
+      "C",
+      "CPL",
+      "PROGRAM",
+      "C&C++"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039ce",
+    "name": "Theory of Computation",
+    "subjects": [
+      "TCOM",
+      "TOC"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039cf",
+    "name": "Graph Theory",
+    "subjects": [
+      "GRAPH-TH"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d0",
+    "name": "DATA STRUCTURES AND PROGRAM DESIGN",
+    "subjects": [
+      "DATA-STRUCT",
+      "DESIGN",
+      "DSPD"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d1",
+    "name": "OLD OPERATING SYSTEMS",
+    "subjects": [
+      "SOLARIS",
+      "UNIX"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d2",
+    "name": "MATHEMATICS",
+    "subjects": [
+      "MATH"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d3",
+    "name": "NEURO FUZZY TECHNIQUES",
+    "subjects": [
+      "NEURO-FUZY"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d4",
+    "name": "COMPILERS AND FORMAL METHODS",
+    "subjects": [
+      "COMPILER",
+      "FORMAL-METH"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d5",
+    "name": "DISTRIBUTED SYSTEMS",
+    "subjects": [
+      "DISTRI-SYS"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d6",
+    "name": "GATE",
+    "subjects": [
+      "GATE"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d7",
+    "name": "COMPUTER NETWORKS",
+    "subjects": [
+      "NETWORK"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d8",
+    "name": "COMMUNICATION SYSTEMS",
+    "subjects": [
+      "COMMU",
+      "COMMU-SYS",
+      "COMMUNICATION"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039d9",
+    "name": "Introduction to Object Oriented Programming",
+    "subjects": [
+      "C&C++",
+      "C++",
+      "IOOM",
+      "JAVA"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039da",
+    "name": "Digital Circuits and Microprocessors",
+    "subjects": [
+      "DCMP",
+      "MICRO-PROC"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039db",
+    "name": "IMAGE PROCESSING / COMPUTER VISION / PATTERN RECOGNITION",
+    "subjects": [
+      "IMAGE-PROC",
+      "PR"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039dc",
+    "name": "Information Retrieval",
+    "subjects": [
+      "INFO-RETRIEV",
+      "INFO-SYS"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039dd",
+    "name": "SYSTEM, CRYPTOGRAPHY AND NETWORK SECURITY",
+    "subjects": [
+      "NET-SECURITY",
+      "NETWORK SECURITY",
+      "SNS",
+      "CRYPTO"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039de",
+    "name": "Computer Organization and Architecture",
+    "subjects": [
+      "CO"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039df",
+    "name": "Data Mining",
+    "subjects": [
+      "DATA-MINING"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6620d7558bcc7c05ce9039e0",
+    "name": "BIO INFORMATICS",
+    "subjects": [
+      "BIO-INFO"
+    ],
+    "__v": 0
+  }
+]
