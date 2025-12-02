@@ -31,3 +31,11 @@ Mr. Kaustubh Shivshankar Shejole received special commendation for his exemplary
 The project and the developer were formally **felicitated by the then Head of Department (HoD), Prof. Manish Kurhekar,** in recognition of the high-quality output and Mr. Shejole's significant commitment to utilizing departmental resources effectively.
 
 > **Note:** The project was specifically praised for its flexibility, robust search utilities, and practical utility, setting a **new standard** for student-developed applications within the department.
+
+---
+
+## Setup
+You can run the following command and install everything needed. MongoDB needs to be setup separately.
+```
+npm install
+```
